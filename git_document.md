@@ -45,6 +45,7 @@ Windows中的文本文件格式和Linux/Unix中的文本文件格式[有所区�
 2. 在终端中输入如下命令
 ```git clone https://github.com/Eric-Song-Love-Coding/git_document.git```
 若文件夹中出现```git_document```文件夹，则说明安装成功。你可以在此文件夹中查看此手册的源代码。
+[windows_git]: https://git-scm.com/downloads
 [win_install_3]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_install_3.png
 [win_install_5]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_install_5.png
 [win_install_6]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/win_install_6.png
@@ -119,10 +120,5 @@ rm命令可以删除一个目录中的一个或多个文件夹或目录，也可
 ### git体系简介
 
 [git_abc]: http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/
-
-
-
-
-
 
 
