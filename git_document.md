@@ -28,11 +28,11 @@ git相比于SVN具有明显的优势，主要是因为它是一个*分布式*管
 ![][win_install_3]
 这里选择安装git的命令行界面和GUI界面。
 ![][win_install_5]
-选择此项意味着可以在Windows的命令行cmd中运行git命令。
+选择此项意味着可以在Windows的命令行cmd.exe中运行git命令。
 ![][win_install_6]
 Windows中的文本文件格式和Linux/Unix中的文本文件格式[有所区别][win_lin_diff],此选项可以使得git自动进行格式转换。
 ![][win_install_7]
-使用MinTTY的打开Git Bash。这是一个支持多字符集、支持256位色、支持鼠标邮件菜单的强大终端。
+使用MinTTY打开Git Bash。这是一个支持多字符集、支持256位色、支持鼠标邮件菜单的强大终端。
 3. 安装完成后，在资源管理器中点击鼠标右键，会出现***Git GUI Here***和***Git Bash Here***的选项。
 4. 在任意文件夹右键点击***Git Bash Here***选项，在打开的命令行窗口中输入如下命令
 ```git clone https://github.com/Eric-Song-Love-Coding/git_document.git```
@@ -116,9 +116,20 @@ rm命令可以删除一个目录中的一个或多个文件夹或目录，也可
 
 ---
 ## git操作
-以下介绍git的常用命令。git的教程资源非常丰富，推荐[廖雪峰的git教程][git_abc]，此教程可完全满足课程需要。感兴趣的同学可以购买相关书籍深入学习。
-### git体系简介
+以下介绍git的常用命令。git的教程资源非常丰富，推荐[廖雪峰的git教程][git_abc]，此教程可完全满足课程需要。感兴趣的同学可以购买相关书籍或查阅[官方教程][git_book]深入学习。
+### 查看git的帮助文档
+git的所有命令都是`git [参数]`的形式，可以使用不带参数的`git`命令就可以列出常用的选项和子命令。
+`git help`命令可以得到详细的文档信息，如使用`git help --all`可以获得完整的字命令列表，而通过`git help add`命令可以得到详细的`git add`命令的用法。也可以访问[这个页面][git_doc]来查看在线文档。
+### 开始使用git——创建版本库
+git的一个重要概念是**版本库（repository）**，版本库只是一个简单的数据库，其中包含所有用来维护与管理项目的修订版本和历史的信息。所有的版本库数据存放在工作目录根目录下一个名为***.git***的隐藏目录中。请注意，*无论何时*都不要删除***.git***目录。
+使用git的头一件事就是创建本地版本库。有两种方法可以创建版本库。
+
+* `git init`命令可以将当前目录转化为git版本库，无论文件夹中是否有文件，得到的版本库都是空的版本库，需要将需要的文件添加进去。
+* `git clone`命令可以复制（或克隆）一个完整的版本库。此命令会在当前目录下建立一个目录，内含所克隆版本库的副本。git支持一组非常丰富的版本库源，不仅可以通过`git clone git_doc d:\\learn\git_doc`这样的命令克隆本地版本库，还可以支持*ssh*，*http[s]*，*ftp[s]*等协议克隆远程版本库。
+
+建立版本库后，可以使用`git status`命令查看版本库的状态。诸如此时
 
 [git_abc]: http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/
-
+[git_book]: https://git-scm.com/book/zh/v2
+[git_doc]: https://git-scm.com/docs
 
