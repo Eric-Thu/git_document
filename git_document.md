@@ -127,9 +127,26 @@ git的一个重要概念是**版本库（repository）**，版本库只是一个
 * `git init`命令可以将当前目录转化为git版本库，无论文件夹中是否有文件，得到的版本库都是空的版本库，需要将需要的文件添加进去。
 * `git clone`命令可以复制（或克隆）一个完整的版本库。此命令会在当前目录下建立一个目录，内含所克隆版本库的副本。git支持一组非常丰富的版本库源，不仅可以通过`git clone git_doc d:\\learn\git_doc`这样的命令克隆本地版本库，还可以支持*ssh*，*http[s]*，*ftp[s]*等协议克隆远程版本库。
 
-建立版本库后，可以使用`git status`命令查看版本库的状态。诸如此时
+建立版本库后，可以使用`git status`命令查看版本库的状态。诸如此时此份文档的版本库状态为下图（此git版本号为2.7.4，运行环境为Ubuntu16.04，可以支持中文）。
+![git_status][git_status]
+状态信息给出了当前所处的*分支*，与*上游分支*的关系，还说明了当前有未*暂存*的修改，修改还未*提交*。我们将在下文中说明它们的意义。
+### 文件的添加与修改
+如上文所述，在*/home/eric/learn/test*文件夹下，我们使用`git init`命令简历一个空的版本库。若我们向文件夹中加入*test.txt*文本文件，版本库的状态如下图所示。
+![git_add_1][git_add_1]
+为了将新文件加入版本库，我们需要使用`git add test.txt`命令。`git add`的参数格式灵活，比如可以使用`git add .`来将当前文件夹下的所有更改都加入版本库。加入文件后版本库的状态如下图所示。
+![git_add_2][git_add_2]
+git告诉我们，*text.txt*文件已经由“未跟踪的文件”变成了“要提交的文件”。实际上，`git add`命令只是将版本库的修改信息提交到了缓冲区中，并没有建立新的版本，用`git log`命令查看也可以获知当前尚无任何提交。这种设计使得开发者可以多次使用`git add`命令添加修改，甚至是撤回原先的修改，而无须形成过多的版本号。
+我们使用`git commit -m '第一次提交'`命令来进行一次提交。提交后版本库状态如下图。
+![git_add_3][git_add_3]
+`git commit -m`命令中，`-m`作为选项，意为输入本次提交的说明，后面需要输入一个任意的字符串，最好是简单描述本次提交到底做了什么。如果仅仅使用`git commit`命令，git也会提示用户输入提交说明。
+在提交后，git生成了一个新的版本号。可以使用`git log`命令查看提交历史，包含了提交的详细信息以及版本号。
+在多人合作开发的过程中，还需要知道每次新的版本是由谁来提交的。我们可以在每次提交的命令行中指定身份，但是更方便的方法是使用`git config`命令在配置文件保存身份信息。使用以下两条命令可以设定用户名字和邮箱。
+`git config user.name "Eric"`
+`git config user.email "songyan_thu@vip.163.com"`
+### 
 
 [git_abc]: http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/
 [git_book]: https://git-scm.com/book/zh/v2
 [git_doc]: https://git-scm.com/docs
+[git_status]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_status.png
 
