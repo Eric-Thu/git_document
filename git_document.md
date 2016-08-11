@@ -143,10 +143,13 @@ git告诉我们，*text.txt*文件已经由“未跟踪的文件”变成了“�
 在多人合作开发的过程中，还需要知道每次新的版本是由谁来提交的。我们可以在每次提交的命令行中指定身份，但是更方便的方法是使用`git config`命令在配置文件保存身份信息。使用以下两条命令可以设定用户名字和邮箱。
 `git config user.name "Eric"`
 `git config user.email "songyan_thu@vip.163.com"`
-### 
+### 时间线和分支
+git版本库存储了所有的历史版本和修改的记录，其存储结构可以理解成一个“树”状的图（并不等同于离散数学中的“树“），一个典型的版本结构如下图所示。
 
 [git_abc]: http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/
 [git_book]: https://git-scm.com/book/zh/v2
 [git_doc]: https://git-scm.com/docs
 [git_status]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_status.png
-
+[git_add_1]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_add_1.png
+[git_add_2]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_add-2.png
+[git_add_3]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_add_3.png
