@@ -143,9 +143,34 @@ git告诉我们，*text.txt*文件已经由“未跟踪的文件”变成了“�
 在多人合作开发的过程中，还需要知道每次新的版本是由谁来提交的。我们可以在每次提交的命令行中指定身份，但是更方便的方法是使用`git config`命令在配置文件保存身份信息。使用以下两条命令可以设定用户名字和邮箱。
 `git config user.name "Eric"`
 `git config user.email "songyan_thu@vip.163.com"`
-### 时间线和分支
+### 分支
 git版本库存储了所有的历史版本和修改的记录，其存储结构可以理解成一个“树”状的图（并不等同于离散数学中的“树“），一个典型的版本结构如下图所示。
+![git_branch_1][git_branch_1]
+图中每个结点均代表了一个版本号。可以看到，我们初始只有主分支（master）上的第一个版本，然后由此版本引出了branchA分支。自此主分支和branchA分支平行前进，互不干扰。主分支在分出branchA分支后，还可以继续分出branchB分支，只不过branchB分支的开始版本与主分支的第二个版本相同。branchA分支依然可以继续分出branchC分支，这些分支依然是平行前进互不干扰的。分支还可以进行合并，如branchA分支的最后并入了主分支，合成了一个新的版本。在分支合并时，主分支上的版本很可能不再是branchA分支分出时的版本，当前版本很可能与branchA分支的当前版本相冲突，这时就需要开发人员解决冲突，git也为我们提供了相关的工具。分支的合并实际上是在两个分支上都进行了一次提交，使得两个分支上的版本相同，而不一定要消灭掉某个子分支。比如branchB与主分支合并后，branchB并没有被删除，而是继续开发。
+回到我们建立的版本库test，我们希望在其中的文本文件*text.txt*中写一首小诗。但是由于鄙人才疏学浅思维枯竭，写诗总是要修修改改。这时我们就应当开辟一个写诗的分支，修修改改都在上面进行，只有当满意了才将正式版的诗合并到主分支上。使用`git branch dev`命令建立dev分支，再直接使用不带参数的`git branch`命令就可以查看目前的分支状况，如下图。
+![git_branch_2][git_branch_2]
+分支状态显示我们当前拥有主分支和dev分支两个分支，而目前处于主分支上（由`*`表示）。使用`git checkout dev`命令可以切换到当前分支上。在此分上我们可以正常进行修改和提交。现在我开始写诗。写完一段诗之后，直接使用`git add`和`git commit`命令就可以在当前分之上提交。
+在提交了三次后，我觉得这诗写得……算那么回事了，可以形成一个正式版给别人看看了，这时我就需要将dev分支的合并到主分支上去。为了执行合并操作，需要先使用`git checkout master`命令移回到主分支上。这时我惊讶地发现，*test.txt*文件中我的诗不见了！实际上，`git checkout`命令相当于**检出**了主分支上的最新版本，而写诗的修改全部发生在dev分支中，在主分支中不可见。现在使用`git merge dev`命令就可以将dev分支合并到主分支。
+如上所描述的合并只是最简单的情况，在合并时并没有发生冲突，实质上只发生了一次指针的移动，相当于将主分支和dev分支重合起来。可以使用`git log --graph`命令来生成图形化的分支历史记录，如下图。
+![git_branch_3][git_branch_3]
+可见本次合并后，并没有出现分叉的分支。这是由于合并过程中，git没有检测到冲突，就自动采用了快速合并的方式进行。
+现在，我接着在dev分支中进行创作，写了一小段以后我忽然想起来诗竟然没写题目就发布在了主分支中！我只能回到主分支给诗加上题目并提交，然后再回到dev分支中继续创作。当我感觉写得不错，准备向主分支提交时，出现了问题，如下图。
+![git_branch_4][git_branch_4]
+主分支和dev分支出现了冲突，需要我们手动去处理。打开test.txt文件如下图。
+![git_branch_5][git_branch_5]
+我们发现发生冲突的地方已经被git使用`<<<<<<<<`、`====`、`>>>>>>>`符号标出，我们将其改动为正确版本后再提交，就可以将两个分支合并了。合并后使用`git log　--graph --pretty=online --abbrev-commit`命令就可以得到下图所示的分支图。
+![git_branch_6][git_branch_6]
+现在，我们觉得这首诗已经写好了，不需要再修改了，就可以将dev分支删除。删除分支的命令为`git branch -d dev`。使用`git branch`查看可以确认dev分支已被删除。
+### 版本回溯
+之前，我们已经用`git log`或`git log --graph`查看过版本库的提交历史，图上每个结点都代表一次提交，对应着一个版本号。我们可以利用此版本号来进行版本回溯与快进。
+版本回溯的命令为`git reset`。在git中，使用`HEAD`代表当前版本，而`HEAD^`就代表上一个版本，上上个版本当然就用`HEAD^^`代表。所以，当我想回到上一个版本的时候，只需要使用`git reset HEAD^`命令。也可以使用`git reset HEAD~100`命令表示回到１００个版本以前。
+> `git reset`命令主要有三个参数，分别为`--soft`，`--mixed`，`--hard`。它们代表了重置当前版本时对索引和工作目录的内容的三种处理方法，git默认使用`--mixed`参数。这三个参数十分重要，建议通过[这个链接][git_reset]来详细了解。
 
+当然也可以直接跳转到某个版本号去。使用`git log --pretty=oneline`命令可以方便地查看版本号和对应的提交信息，如下图。
+![git_reset_1][git_reset_1]
+与SVN不同，git的版本号不是1.2.3这样递增的数字，而是使用[SHA1][SHA1]算出的一个非常大的数字，使用十六进制表示。只需要使用`git reset [对应的版本号]`就可以跳跃到指定的版本去了。由于散列的离散特性，一般只需要版本号的前几位就可以了。
+在版本见跳跃的另一个技巧是，使用`git reflog`命令可以查看git操作历史，包括每条命令是在哪个版本上发出的。这就可以避免错误使用`git reset --hard`命令跳到过去版本回不来了的问题。
+![git_reset_2][git_reset_2]
 [git_abc]: http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/
 [git_book]: https://git-scm.com/book/zh/v2
 [git_doc]: https://git-scm.com/docs
@@ -153,3 +178,13 @@ git版本库存储了所有的历史版本和修改的记录，其存储结构�
 [git_add_1]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_add_1.png
 [git_add_2]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_add-2.png
 [git_add_3]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_add_3.png
+[git_branch_1]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_branch_1.png
+[git_branch_2]: 
+[git_branch_3]: 
+[bit_branch_4]:
+[git_branch_5]:
+[git_branch_6]: 
+[git_reset]: http://www.open-open.com/lib/view/open1397013992747.html
+[git_reset_1]: 
+[SHA1]: https://zh.wikipedia.org/wiki/SHA家族
+[git_reset_2]:
