@@ -179,12 +179,12 @@ git版本库存储了所有的历史版本和修改的记录，其存储结构�
 [git_add_2]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_add-2.png
 [git_add_3]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_add_3.png
 [git_branch_1]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_branch_1.png
-[git_branch_2]: 
-[git_branch_3]: 
-[bit_branch_4]:
-[git_branch_5]:
-[git_branch_6]: 
+[git_branch_2]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_branch_2.png
+[git_branch_3]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_branch_3.png
+[bit_branch_4]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_branch_4.png
+[git_branch_5]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_branch_5.png
+[git_branch_6]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_branch_6.png
 [git_reset]: http://www.open-open.com/lib/view/open1397013992747.html
-[git_reset_1]: 
+[git_reset_1]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_reset_1.png
 [SHA1]: https://zh.wikipedia.org/wiki/SHA家族
-[git_reset_2]:
+[git_reset_2]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_reset_2.png
