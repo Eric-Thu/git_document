@@ -5,7 +5,7 @@
 ## 版本控制软件——为什么要使用git
 自从高级语言[*Fortran*][fortran]被广泛使用，人类所开发的软件规模爆炸式地增长起来。随之而来的还有大型程序开发与维护中的许多严重问题，这些问题可能导致软件产品的寿命缩短，甚至夭折。这就是所谓的[软件危机][软件危机]。人类在应对软件维基的过程中逐渐总结出一套方法，形成了[软件工程][软件工程]这一学科。其中，一个非常重要的方法就是要对程序进行严格的[版本控制][版本控制]。
 
-版本控制软件就是为了对软件进行版本控制而开发的工具软件。目前常用的版本控制软件有[协作版本系统(CVS)][CVS],[Subversion(SVN)][SVN],[git][git]等。有限元课程之前一直在使用SVN，今年是第一年使用git作为版本管理工具。
+版本控制软件就是为了对软件进行版本控制而开发的工具软件。目前常用的版本控制软件有[协作版本系统(CVS)][CVS]，[Subversion(SVN)][SVN]，[git][git]等。有限元课程之前一直在使用SVN，今年是第一年使用git作为版本管理工具。
 
 git相比于SVN具有明显的优势，主要是因为它是一个*分布式*管理系统。这意味着每个开发者的计算机上都有一个完整的仓库，包括完整的源代码以及开发历史。每个开发者需要在自己的仓库内完成自己的工作，形成稳定版本后再上传至远程服务器。这大大减少了开发者之间的冲突，并且对网络的依赖也不如SVN那样严重。
 
@@ -158,9 +158,9 @@ git版本库存储了所有的历史版本和修改的记录，其存储结构�
 ![git_branch_4][git_branch_4]
 主分支和dev分支出现了冲突，需要我们手动去处理。打开test.txt文件如下图。
 ![git_branch_5][git_branch_5]
-我们发现发生冲突的地方已经被git使用`<<<<<<<<`、`====`、`>>>>>>>`符号标出，我们将其改动为正确版本后再提交，就可以将两个分支合并了。合并后使用`git log　--graph --pretty=online --abbrev-commit`命令就可以得到下图所示的分支图。
+我们发现发生冲突的地方已经被git使用`<<<<<<<<`、`====`、`>>>>>>>`等符号标出，我们将其改动为正确版本后再提交，就可以将两个分支合并了。合并后使用`git log　--graph --pretty=online --abbrev-commit`命令就可以得到下图所示的分支图。
 ![git_branch_6][git_branch_6]
-现在，我们觉得这首诗已经写好了，不需要再修改了，就可以将dev分支删除。删除分支的命令为`git branch -d dev`。使用`git branch`查看可以确认dev分支已被删除。
+现在，我觉得这首诗已经写好了，不需要再修改了，就可以将dev分支删除。删除分支的命令为`git branch -d dev`。使用`git branch`查看可以确认dev分支已被删除。
 ### 版本回溯
 之前，我们已经用`git log`或`git log --graph`查看过版本库的提交历史，图上每个结点都代表一次提交，对应着一个版本号。我们可以利用此版本号来进行版本回溯与快进。
 版本回溯的命令为`git reset`。在git中，使用`HEAD`代表当前版本，而`HEAD^`就代表上一个版本，上上个版本当然就用`HEAD^^`代表。所以，当我想回到上一个版本的时候，只需要使用`git reset HEAD^`命令。也可以使用`git reset HEAD~100`命令表示回到１００个版本以前。
@@ -171,6 +171,25 @@ git版本库存储了所有的历史版本和修改的记录，其存储结构�
 与SVN不同，git的版本号不是1.2.3这样递增的数字，而是使用[SHA1][SHA1]算出的一个非常大的数字，使用十六进制表示。只需要使用`git reset [对应的版本号]`就可以跳跃到指定的版本去了。由于散列的离散特性，一般只需要版本号的前几位就可以了。
 在版本见跳跃的另一个技巧是，使用`git reflog`命令可以查看git操作历史，包括每条命令是在哪个版本上发出的。这就可以避免错误使用`git reset --hard`命令跳到过去版本回不来了的问题。
 ![git_reset_2][git_reset_2]
+### GitHub和远程仓库
+若仅像上文一样在本地管理版本库，相对于SVN等版本控制软件，git并没有显示出多大优势。git的最大优势在于它的分布式特点，而git分布式特征是基于远程仓库来实现的。
+远程仓库并不指的是空间上距离足够远（虽然大部分情况确实如此），而是指两个仓库之间通过局域网或者广域网（当然，也可以在同一台计算机中）保持同步的能力。搭建git服务器是容易的，但是对于学生或者个人开发者而言，搭建一个git服务器或许有些小题大做。推荐使用[GitHub][GitHub]来搭建自己的远程版本库，使得自己可以在任意时间任何设备上进行自己的开发。
+GitHub是一个**开源**代码库，这意味着任何人都可以在GitHub上注册免费的账号并且托管自己的远程仓库，还可以搜索别人的开源代码来进行学习、使用和开发。GitHub也可以建立私人仓库，但这属于付费功能。
+注册GitHub后，就可以在GitHub上创建远程仓库。现在我在我的GitHub中创建poem远程仓库，创建好的界面如下图。
+![github_1][github_1]
+此界面列出了将远程仓库与本地仓库建立连接的方法，可以看到GitHub支持*https*和*ssh*协议。如果我们想在远程仓库的基础上进行开发，需要将远程仓库克隆到本地；若要将本地仓库推送到远程，则需要在本地仓库手动建立连接。
+我们在本地的test仓库中，使用`git remote add origin https://github.com/Eric-Song-Love-Coding/poem.git`命令就可以将本地仓库与远程仓库建立连接。
+> git的版本库分为*裸版本库*和*开发版本库*两类。我们之前一直在使用开发版本库，它有工作目录和分支的概念，可以修改和提交。而裸版本库则没有工作目录，它一般作为协作开发的权威焦点。开发人员从裸版本库中进行克隆（clone）、抓取（fetch）和推送（push）更新操作。裸版本库适合作为服务器端的远程仓库。
+
+> 本地仓库与远程仓库的连接是单向的。本地仓库会建立一个连接指回它的父仓库，但是原始版本库并不知道任何克隆版本库。默认情况下，git会将源版本库成为*origin*，其主分支即为*origin/master*。此名称可以更改。
+
+使用不带参数的`git remote`命令可以查看当前连接的所有远程版本库。现在我可以使用`git push -u origin master`命令将当前分支推送到远程库的主分支。如下图所示。
+![github_2][github_2]
+> 由于我的GitHub并未设置本机的SSH秘钥，所以需要输入账号密码才能够推送。免去这一步骤，可以在GitHub上[进行秘钥设置][SSH_Key]。
+
+`git push`命令有许多选项，这里的`-u`意为将本地主分支和远程版本库主分支绑定在一起，之后只需要`git push origin master`命令即可。注意此命令的格式为`git push [远程版本库名] [本地分支名]`。
+当多人合作时，很可能出现这样的情况：在将本地修改推送到远程版本库时，远程版本库已经被他人修改，出现冲突，这时会提示推送失败。所以比较好的习惯就是在每次推送前先使用`git pull`命令抓取远程版本库的最新版本，手动解决冲突后即可推送。
+
 [git_abc]: http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/
 [git_book]: https://git-scm.com/book/zh/v2
 [git_doc]: https://git-scm.com/docs
@@ -188,3 +207,7 @@ git版本库存储了所有的历史版本和修改的记录，其存储结构�
 [git_reset_1]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_reset_1.png
 [SHA1]: https://zh.wikipedia.org/wiki/SHA家族
 [git_reset_2]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/git_reset_2.png
+[GitHub]: https://github.com/
+[github_1]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/github_1.png
+[github_2]:　https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/github_2.png
+[SSH_Key]: http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000
