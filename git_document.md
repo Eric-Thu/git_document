@@ -225,3 +225,31 @@ GitHub是一个**开源**代码库，这意味着任何人都可以在GitHub上�
 [github_1]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/github_1.png
 [github_2]:　https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/github_2.png
 [SSH_Key]: http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000
+
+![gitlab][gitlab]
+[gitlab]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/gitlab.jpg
+## GitLab的使用
+本学期有限元课程的大作业要求托管在我们自己搭建的GitLab平台上，下面介绍GitLab的用法。
+###　注册GitLab
+[GitLab][GitLab_intro]与GitHub类似，可以在网页上管理自己的远程仓库。使用GitLab需要首先注册一个账号。
+我们搭建的GitLab服务器域名为[data.comdyn.cn:30000](data.comdyn.cn:30000)。
+> 由于校内网络与外网连接不稳定，请尽量于校内访问。校外访问时，请不要上传过大的文件，否则会产生较高的流量费用。
+
+GitLab的登陆界面如下图，请按照图示填写个人信息。若填写信息不实或者不是选课人员，助教会关闭此账号。
+
+![GitLab_SingUp][GitLab_SignUp]
+点击*Sign Up*完成注册，这时注册邮箱会收到[助教邮箱](songyan_thu@vip.163.com)发来的验证邮件，如下图所示。
+
+![GitLab_Confirm][GitLab_Confirm]
+点击*Confirm your account*进行验证，之后账号便可以正常使用了。注意：有时服务器会与外网断开连接，若注册后收不到验证邮件，请与助教联系。助教会手动验证你的账号。
+
+### 参与小组项目开发
+登陆自己的账号后，会看到如下页面。
+
+![GitLab_Home][GitLab_Home]
+页面的中间显示了现在正在参与的项目，包括自己创建的项目和小组中共同开发的项目。
+
+[GitLab_intro]: https://zh.wikipedia.org/wiki/Gitlab
+[GitLab_SignUp]: 
+[GitLab_Confirm]: 
+[GitLab_Home]: 
