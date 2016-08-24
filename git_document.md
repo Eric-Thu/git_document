@@ -247,9 +247,16 @@ GitLab的登陆界面如下图，请按照图示填写个人信息。若填写�
 登陆自己的账号后，会看到如下页面。
 
 ![GitLab_Home][GitLab_Home]
-页面的中间显示了现在正在参与的项目，包括自己创建的项目和小组中共同开发的项目。
+页面的中间显示了现在正在参与的项目，包括自己创建的项目和小组中共同开发的项目。为了保证服务器的安全保证，新注册的账号没有建立自己项目的权限，助教会将同学分组，并且为每个组建立一个项目作为本组的远程仓库。每组成员权限设置为[**Developer**](http://data.comdyn.cn:30000/help/permissions/permissions.md)。
+
+点击本组的项目，会出现项目的git地址。如下图所示。
+
+![GitLab_Project][GitLab_Project]
+助教已经为每组上传了STAP90的源代码，只需要将项目克隆到本地即可。git的地址有两种协议可供选择，*SSH*和*HTTPS*。
+SSH(Secure Shell)
 
 [GitLab_intro]: https://zh.wikipedia.org/wiki/Gitlab
 [GitLab_SignUp]: 
 [GitLab_Confirm]: 
 [GitLab_Home]: 
+[GitLab_Project]: 
