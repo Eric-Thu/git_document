@@ -316,4 +316,4 @@ Git再好用，记忆命令行及参数对很多人来说也是很高的门槛�
 TortoiseGit只能在Windows系统上运行。请于[这里](https://tortoisegit.org/download/)下载适合的安装包（注意区分32位和64位）。安装前请保证已经安装了[Git for windows](https://git-for-windows.github.io/)，否则会无法使用。
 打开安装程序，修改安装路径后全部默认进行安装就可以，安装完成后在资源管理器中随意右击即可看到git选项。其选项名称均与git命令相同，非常容易操作，请同学自己学习。
 
-[TortoiseGit]: 
+[TortoiseGit]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/TortoiseGit.PNG
