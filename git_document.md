@@ -298,8 +298,8 @@ GitLab为我们提供了非常好用的项目管理工具。使用好这些工�
 ![GitLab_Tudos][GitLab_Tudos]
 当任务完成后，只要点击*Done*按钮就可以了！
 
-[GitLab_Group]: 
-[GitLab_Issue]: 
-[GitLab_IssueScreen]: 
-[GitLab_Tudos]: 
+[GitLab_Group]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/GitLab_Group.png
+[GitLab_Issue]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/GitLab_Issue.png
+[GitLab_IssueScreen]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/GitLab_IssueScreen.png
+[GitLab_Tudos]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/GitLab_Tudo.png
 
