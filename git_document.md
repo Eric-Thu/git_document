@@ -243,7 +243,7 @@ GitLab的登陆界面如下图，请按照图示填写个人信息。若填写�
 ![GitLab_Confirm][GitLab_Confirm]
 点击*Confirm your account*进行验证，之后账号便可以正常使用了。注意：有时服务器会与外网断开连接，若注册后收不到验证邮件，请与助教联系。助教会手动验证你的账号。
 
-### 参与小组项目开发
+### 与GitLab建立连接
 登陆自己的账号后，会看到如下页面。
 
 ![GitLab_Home][GitLab_Home]
@@ -253,10 +253,53 @@ GitLab的登陆界面如下图，请按照图示填写个人信息。若填写�
 
 ![GitLab_Project][GitLab_Project]
 助教已经为每组上传了STAP90的源代码，只需要将项目克隆到本地即可。git的地址有两种协议可供选择，*SSH*和*HTTPS*。
-SSH(Secure Shell)
 
+#### SSH
+SSH（Secure Shell，安全外壳协议）提供了*点对点*的安全通讯方式。它识别的是设备信息而不是账户信息，你可以向你的账号中添加一台设备（通过添加SSH公钥）来将此设备设定为“可信赖”。之后使用此设备与远程仓库交互时，GitLab会根据你当前使用的设备来验证你的身份。
+首先需要在自己的设备上生成SSH公钥。Windows系统的SSH公钥保存在用户主目录的.ssh下（如`C:\Users\ZhuJiao`），若有`id_rsa.pub`文件，说明公钥已生成。若无此文件，则需要生成。Linux系统的SSH公钥也保存在用户主目录`~/.ssh`下，使用`cat ~/.ssh/id_rsa.pub`命令查看是否有公钥。
+若没有公钥，可以使用`ssh-keygen -t rsa -C "[你的邮箱]"`命令生成公钥。生成过程中不需要设置密码。生成后使用文本工具打开`id_rsa.pub`文件，可以看到公钥的内容如下图所示。
+
+![GitLab_SSHKey][GitLab_SSHKey]
+登陆GitLab账户后，在右侧*Profile Settings→SSH Keys*中添加SSH公钥。只需要将*id_rsa.pub*的内容复制在文本框中，再输入一个名字，点击*Add Key*即可添加。如下图所示。
+
+![GitLab_AddKey][GitLab_AddKey]
+添加SSH公钥后，直接在本地使用`git clone [SSH Address]`命令即可将远程仓库克隆至本地。
+
+#### HTTPS
+HTTPS需要验证账号密码，在本地使用`git clone [HTTPS Address]`命令可以将远程仓库克隆至本地，但是克隆之前需要按照提示输入GitLab的账号与密码。
 [GitLab_intro]: https://zh.wikipedia.org/wiki/Gitlab
-[GitLab_SignUp]: 
-[GitLab_Confirm]: 
-[GitLab_Home]: 
-[GitLab_Project]: 
+[GitLab_SignUp]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/GitLab_Logup.png
+[GitLab_Confirm]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/GitLab_Confirm.png
+[GitLab_Home]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/GitLab_Home.png
+[GitLab_Project]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/GitLab_Project.png
+[GitLab_SSHKey]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/GItLab_SSHKey.png
+[GitLab_AddKey]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/GitLab_AddKey.png
+
+
+###　小组共同开发
+GitLab为我们提供了非常好用的项目管理工具。使用好这些工具，能够大大提高多人合作开发软件的效率，降低出错率。小组合作的所有信息都显示在GitLab的主界面中，如下图左侧所示。
+
+![GitLab_Group][GitLab_Group]
+
+#### 里程碑 Milestone
+里程碑是版本控制中的一个重要概念，它指的是一个阶段性的可发布的稳定版本（相对于开发版本而言）。里程碑由项目管理者事先设定好，作为当前的工作目标。一般里程碑拥有一个不同于开发版本号的发布版本号。
+本课程中，同学所使用的GitLab账户没有设置里程碑的权限，里程碑由老师或助教按照目前的教学安排进行设置。
+
+####　要做的事和专案 Todos & Issues
+这两者是小组合作交互的灵魂所在。开发者可以在GitLab上创建专案来讨论问题，明确下一步要做的事以及指派人去完成。受到指派的人会收到邮件通知（服务器与外网连接的情况下），也会在Tudos一栏收到任务提示。与任务无关的人可以在issues页面中进行相关讨论，issues可以随时关闭专案、指派新的任务或者更换任务执行人。
+点击*Issues→New Issue*即可创建专案，如下图。
+
+![GitLab_Issue][GitLab_Issue]
+在专案创建界面可以输入专案的题目、详细描述、分配给任务的人以及专案对应的里程碑。专案的题目力求简洁精炼。描述部分支持[Markdown](http://sspai.com/25137)语法，可以呈现出漂亮的排版效果。创建好专案后，点击即可进入专案界面，如下图。
+
+![GitLab_IssueScreen][GitLab_IssueScreen]
+专案界面像是一个BBS应用，组内成员可以自由发表意见（支持Markdown），还可以添加附件。专案的创始人可以改动指派完成任务的人员，关闭专案甚至删除专案。被指派的人员可以在自己的Tudos界面看到被指定的任务，如下图。
+
+![GitLab_Tudos][GitLab_Tudos]
+当任务完成后，只要点击*Done*按钮就可以了！
+
+[GitLab_Group]: 
+[GitLab_Issue]: 
+[GitLab_IssueScreen]: 
+[GitLab_Tudos]: 
+
