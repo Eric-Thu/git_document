@@ -285,7 +285,7 @@ GitLab为我们提供了非常好用的项目管理工具。使用好这些工�
 里程碑是版本控制中的一个重要概念，它指的是一个阶段性的可发布的稳定版本（相对于开发版本而言）。里程碑由项目管理者事先设定好，作为当前的工作目标。一般里程碑拥有一个不同于开发版本号的发布版本号。
 本课程中，同学所使用的GitLab账户没有设置里程碑的权限，里程碑由老师或助教按照目前的教学安排进行设置。
 
-####　要做的事和专案 Todos & Issues
+#### 要做的事和专案 Todos & Issues
 这两者是小组合作交互的灵魂所在。开发者可以在GitLab上创建专案来讨论问题，明确下一步要做的事以及指派人去完成。受到指派的人会收到邮件通知（服务器与外网连接的情况下），也会在Tudos一栏收到任务提示。与任务无关的人可以在issues页面中进行相关讨论，issues可以随时关闭专案、指派新的任务或者更换任务执行人。
 点击*Issues→New Issue*即可创建专案，如下图。
 
@@ -303,3 +303,17 @@ GitLab为我们提供了非常好用的项目管理工具。使用好这些工�
 [GitLab_IssueScreen]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/GitLab_IssueScreen.png
 [GitLab_Tudos]: https://raw.githubusercontent.com/Eric-Song-Love-Coding/git_document/master/picture/GitLab_Tudo.png
 
+![TortoiseGit][TortoiseGit]
+## 更好用的Git - TortoiseGit
+Git再好用，记忆命令行及参数对很多人来说也是很高的门槛。为了使得Git更好用，Tim Kemp开发了[TortoiseGit](https://tortoisegit.org/)（TortoiseSVN也是他开发的）。TortoiseGit提供了好用的Git的图形界面，大大降低了Git的学习成本。
+为了更好地理解TortoiseGit的工作原理，我们应当明确以下两个事实：
+
+1. 所有的git命令都为`git [参数]`这样的形式
+2. 几乎所有的git命令都对一个对象/目录/文件进行了操作
+
+基于这两点，就可以很容易地理解TortoiseGit的工作原理。它实际上就是将git命令放在了Windows的右键菜单中供人选择，而命令的对象就是当前点击的目录/对象/文件。
+
+TortoiseGit只能在Windows系统上运行。请于[这里](https://tortoisegit.org/download/)下载适合的安装包（注意区分32位和64位）。安装前请保证已经安装了[Git for windows](https://git-for-windows.github.io/)，否则会无法使用。
+打开安装程序，修改安装路径后全部默认进行安装就可以，安装完成后在资源管理器中随意右击即可看到git选项。其选项名称均与git命令相同，非常容易操作，请同学自己学习。
+
+[TortoiseGit]: 
